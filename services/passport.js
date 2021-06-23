@@ -1,5 +1,5 @@
 import passport from "passport";
-import { Strategy } from "passport-google-oauth20";
+import { Strategy as googleStrategy } from "passport-google-oauth20";
 import keys from "../config/keys.js";
 import userModel from "../models/User.js";
 
@@ -12,30 +12,24 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(
-    new Strategy(
+    new googleStrategy(
         {
             clientID: keys.GOOGLE_CLIENT_ID,
             clientSecret: keys.GOOGLE_CLIENT_SECRET,
             callbackURL: "/auth/google/callback",
             proxy: true,
         },
-        (req, acessToken, requestToken, profile, done) => {
-            // console.log(profile);
-            userModel.findOne({ googleId: profile.id }).then((foundRecord) => {
-                if (foundRecord) {
-                    // console.log(foundRecord);
-                    // console.log(done);
-                    done(null, foundRecord);
-                } else {
-                    // console.log("not found");
-                    new userModel({
-                        googleId: profile.id,
-                        userName: profile.displayName,
-                    })
-                        .save()
-                        .then((user) => done(null, user));
-                }
+        async (req, acessToken, requestToken, profile, done) => {
+            const foundRecord = await userModel.findOne({
+                googleId: profile.id,
             });
+            if (foundRecord) return done(null, foundRecord);
+
+            const user = await new userModel({
+                googleId: profile.id,
+                userName: profile.displayName,
+            }).save();
+            done(null, user);
         }
     )
 );

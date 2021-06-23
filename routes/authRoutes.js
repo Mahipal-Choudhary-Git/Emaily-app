@@ -3,7 +3,7 @@ import passport from "passport";
 
 const authRoute = Router();
 authRoute.get(
-    "/auth",
+    "/auth/google",
     passport.authenticate("google", {
         scope: ["profile", "email"],
     })
@@ -21,9 +21,8 @@ authRoute.get("/api/logout", (req, res) => {
     req.logout();
     res.send(req.user);
 });
-authRoute.get("/api/user", (req, res) => {
+authRoute.get("/api/current_user", (req, res) => {
     res.send(req.user);
-    // res.end("hellow");
 });
 
 export default authRoute;
