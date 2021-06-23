@@ -11,15 +11,14 @@ authRoute.get(
 
 authRoute.get(
     "/auth/google/callback",
-    passport.authenticate("google")
-    // (req, res) => {
-    //     res.send("<h1>hellow</h1>");
-    //     res.end();
-    // }
+    passport.authenticate("google"),
+    (req, res) => {
+        res.redirect("/surveys");
+    }
 );
 authRoute.get("/api/logout", (req, res) => {
     req.logout();
-    res.send(req.user);
+    res.redirect("/");
 });
 authRoute.get("/api/current_user", (req, res) => {
     res.send(req.user);
