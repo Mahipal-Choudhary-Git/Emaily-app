@@ -26,6 +26,8 @@ passport.use(
             if (foundRecord) return done(null, foundRecord);
 
             const user = await new userModel({
+                email: profile.emails[0].value,
+                profileImage: profile.photos[0].value,
                 googleId: profile.id,
                 userName: profile.displayName,
             }).save();
