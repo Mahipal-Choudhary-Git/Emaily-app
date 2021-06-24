@@ -1,5 +1,8 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import StripeWrapper from "./StripeWrapper";
+
 const Header = () => {
     const auth = useSelector((store) => store.auth);
     return (
@@ -27,6 +30,12 @@ const renderContent = (auth) => {
         default:
             return (
                 <>
+                    <li>
+                        <StripeWrapper />
+                    </li>
+                    <li style={{ margin: "0 10px" }}>
+                        Credits: {auth.credits}
+                    </li>
                     <li>
                         <a href="/api/logout">Logout</a>
                     </li>
