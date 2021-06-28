@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
     {
         googleId: String,
         userName: String,
@@ -13,4 +13,4 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-export default mongoose.model("users", userSchema);
+export default mongoose.model("users", UserSchema);
