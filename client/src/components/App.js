@@ -6,7 +6,7 @@ import Dashboard from "./Dashboard";
 
 import Header from "./Header";
 import Landing from "./Landing";
-import SurveyNew from "./SurveyNew";
+import SurveyNew from "./surveys/SurveyNew";
 import { fetchUser } from "../actions";
 
 const App = () => {

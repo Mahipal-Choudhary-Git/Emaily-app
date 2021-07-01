@@ -2,7 +2,7 @@ import { Router } from "express";
 import stripe from "stripe";
 
 import keys from "../config/keys.js";
-import { requireLogin } from "../middlewares";
+import { requireLogin } from "../middlewares/index.js";
 
 const stripeConfig = stripe(keys.stripeSecretKey);
 const billingRoute = Router();

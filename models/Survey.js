@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 import RecipientSchema from "./Recipient.js";
 
@@ -10,7 +10,7 @@ const SurveySchema = new mongoose.Schema(
         recipients: [RecipientSchema],
         yes: { type: Number, default: 0 },
         no: { type: Number, default: 0 },
-        _user: { type: Schema.Types.ObjectId, ref: "User" },
+        _user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     },
     {
         timestamps: true,
