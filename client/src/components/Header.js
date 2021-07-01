@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <nav>
             <div className="nav-wrapper">
-                <Link to="/" className="brand-logo">
+                <Link to="/surveys" className="brand-logo">
                     &nbsp; Emaily
                 </Link>
                 <ul className="right">{renderContent(auth)}</ul>

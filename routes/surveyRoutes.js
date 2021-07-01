@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { requireCredits, requireLogin } from "../middlewares";
+import { requireCredits, requireLogin } from "../middlewares/index.js";
 import surveyModel from "../models/Survey.js";
 import Mailer from "../services/Mailer.js";
 import surveyTemplate from "../services/templates/surveyTemplate.js";
