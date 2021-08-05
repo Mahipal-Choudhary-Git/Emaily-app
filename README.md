@@ -9,7 +9,7 @@
 4. user can only login with google account.
 
 
-# MERN stack(ES^ syntax)
+# MERN stack(ES6 syntax)
 ## Server(NodeJS & ExpressJS & MongoDB)
 
 1. mongo cloud is used for storing user data. that connected with our node server via mongoose.
